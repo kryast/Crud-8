@@ -68,3 +68,12 @@ func (h *EmployeeHandler) Update(c *gin.Context) {
 
 	c.JSON(http.StatusOK, employee)
 }
+
+func (h *EmployeeHandler) Delete(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Param("id"))
+	if err := h.service.Delete(uint(id)); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"message": "Employee soft deleted"})
+}

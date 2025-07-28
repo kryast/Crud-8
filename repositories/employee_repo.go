@@ -10,6 +10,7 @@ type EmployeeRepository interface {
 	GetAll() ([]models.Employee, error)
 	GetByID(id uint) (*models.Employee, error)
 	Update(employee *models.Employee) error
+	Delete(id uint) error
 }
 
 type employeeRepository struct {
@@ -39,4 +40,8 @@ func (r *employeeRepository) GetByID(id uint) (*models.Employee, error) {
 func (r *employeeRepository) Update(employee *models.Employee) error {
 	return r.db.Save(employee).Error
 
+}
+
+func (r *employeeRepository) Delete(id uint) error {
+	return r.db.Delete(&models.Employee{}, id).Error
 }

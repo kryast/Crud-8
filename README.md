@@ -13,3 +13,6 @@ PUT
 curl -X PUT http://localhost:8080/employees/1 \
 -H "Content-Type: application/json" \
 -d '{"name":"Budi Updated", "email":"budi2@example.com", "position":"CEO"}'
+
+DELETE
+curl -X DELETE http://localhost:8080/employees/1
