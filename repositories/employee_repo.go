@@ -9,6 +9,7 @@ type EmployeeRepository interface {
 	Create(employee *models.Employee) error
 	GetAll() ([]models.Employee, error)
 	GetByID(id uint) (*models.Employee, error)
+	Update(employee *models.Employee) error
 }
 
 type employeeRepository struct {
@@ -33,4 +34,9 @@ func (r *employeeRepository) GetByID(id uint) (*models.Employee, error) {
 	var employee models.Employee
 	err := r.db.First(employee, id).Error
 	return &employee, err
+}
+
+func (r *employeeRepository) Update(employee *models.Employee) error {
+	return r.db.Save(employee).Error
+
 }

@@ -50,3 +50,21 @@ func (h *EmployeeHandler) GetByID(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, employee)
 }
+
+func (h *EmployeeHandler) Update(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Param("id"))
+
+	var employee models.Employee
+	if err := c.ShouldBindJSON(&employee); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	employee.ID = uint(id)
+	if err := c.ShouldBindJSON(&employee); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, employee)
+}

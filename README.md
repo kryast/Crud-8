@@ -8,3 +8,8 @@ curl -X POST http://localhost:8080/employees \
 GET
 curl http://localhost:8080/employees
 curl http://localhost:8080/employees/1
+
+PUT
+curl -X PUT http://localhost:8080/employees/1 \
+-H "Content-Type: application/json" \
+-d '{"name":"Budi Updated", "email":"budi2@example.com", "position":"CEO"}'

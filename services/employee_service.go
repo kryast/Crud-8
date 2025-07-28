@@ -9,6 +9,7 @@ type EmployeeService interface {
 	Create(employee *models.Employee) error
 	GetAll() ([]models.Employee, error)
 	GetByID(id uint) (*models.Employee, error)
+	Update(employee *models.Employee) error
 }
 
 type employeeService struct {
@@ -29,4 +30,8 @@ func (s *employeeService) GetAll() ([]models.Employee, error) {
 
 func (s *employeeService) GetByID(id uint) (*models.Employee, error) {
 	return s.repo.GetByID(id)
+}
+
+func (s *employeeService) Update(employee *models.Employee) error {
+	return s.repo.Update(employee)
 }
