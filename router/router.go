@@ -16,6 +16,8 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 	h := handlers.NewEmployeeHandler(svc)
 
 	r.POST("/employees", h.Create)
+	r.GET("/employees", h.GetAll)
+	r.GET("/employees/:id", h.GetByID)
 
 	return r
 }

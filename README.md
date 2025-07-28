@@ -4,3 +4,7 @@ POST
 curl -X POST http://localhost:8080/employees \
 -H "Content-Type: application/json" \
 -d '{"name":"Budi", "email":"budi@example.com", "position":"Manager"}'
+
+GET
+curl http://localhost:8080/employees
+curl http://localhost:8080/employees/1
